@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 11% 98%; /* #F8FAFC */
+  --foreground: 223 84% 12%; /* #1A237E */
+  --muted: 210 11% 96%; /* #F1F5F9 */
+  --muted-foreground: 215 13% 45%; /* #64748B */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 223 84% 12%; /* #1A237E */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 223 84% 12%; /* #1A237E */
+  --border: 215 28% 90%; /* #E2E8F0 */
+  --input: 215 28% 90%; /* #E2E8F0 */
+  --primary: 223 84% 12%; /* #1A237E */
+  --primary-foreground: 210 40% 98%; /* #F8FAFC */
+  --secondary: 174 100% 37%; /* #00BFA5 */
+  --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+  --accent: 24 100% 52%; /* #FF6D00 */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
+  --destructive: 0 84% 60%; /* #EF4444 */
+  --destructive-foreground: 60 9% 98%; /* #FEFEFE */
+  --ring: 223 84% 12%; /* #1A237E */
+  --radius: 0.5rem;
+  --chart-1: 223 84% 12%;
+  --chart-2: 174 100% 37%;
+  --chart-3: 24 100% 52%;
+  --chart-4: 262 52% 47%;
+  --chart-5: 346 77% 49%;
+}
+
+.dark {
+  --background: 240 10% 4%; /* #0F172A */
+  --foreground: 0 0% 98%; /* #F8FAFC */
+  --muted: 240 3% 16%; /* #334155 */
+  --muted-foreground: 215 13% 65%; /* #94A3B8 */
+  --popover: 240 10% 4%; /* #0F172A */
+  --popover-foreground: 0 0% 98%; /* #F8FAFC */
+  --card: 240 10% 4%; /* #0F172A */
+  --card-foreground: 0 0% 98%; /* #F8FAFC */
+  --border: 240 3% 16%; /* #334155 */
+  --input: 240 3% 16%; /* #334155 */
+  --primary: 223 84% 12%; /* #1A237E */
+  --primary-foreground: 210 40% 98%; /* #F8FAFC */
+  --secondary: 174 100% 37%; /* #00BFA5 */
+  --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+  --accent: 24 100% 52%; /* #FF6D00 */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
+  --destructive: 0 62% 31%; /* #DC2626 */
+  --destructive-foreground: 0 0% 98%; /* #F8FAFC */
+  --ring: 212 100% 47%; /* #3B82F6 */
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-korean antialiased bg-background text-foreground;
+    font-family: 'Noto Sans KR', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .font-korean {
+    font-family: 'Noto Sans KR', system-ui, sans-serif;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .hover-lift:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+  
+  .page-transition {
+    @apply transition-opacity duration-300 ease-in-out;
+  }
+  
+  .sphere {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)));
+    position: relative;
+    animation: rotate-slow 20s linear infinite, float 6s ease-in-out infinite;
+  }
+  
+  .sphere::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+  
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--primary)), #1e40af, hsl(var(--secondary)));
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--secondary));
+}
