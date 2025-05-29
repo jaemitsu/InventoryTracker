@@ -2,11 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const Navigation = () => {
   const [location] = useLocation();
@@ -27,13 +23,21 @@ const Navigation = () => {
     return false;
   };
 
-  const NavLink = ({ path, label, mobile = false }: { path: string; label: string; mobile?: boolean }) => (
+  const NavLink = ({
+    path,
+    label,
+    mobile = false,
+  }: {
+    path: string;
+    label: string;
+    mobile?: boolean;
+  }) => (
     <Link href={path}>
       <Button
         variant={isActive(path) ? "default" : "ghost"}
         className={`${mobile ? "w-full justify-start" : ""} ${
-          isActive(path) 
-            ? "bg-primary text-primary-foreground" 
+          isActive(path)
+            ? "bg-primary text-primary-foreground"
             : "text-muted-foreground hover:text-primary"
         }`}
         onClick={() => mobile && setIsOpen(false)}
@@ -50,7 +54,9 @@ const Navigation = () => {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <div className="w-8 h-8 gradient-primary rounded-lg mr-3"></div>
-              <span className="text-xl font-bold text-primary">DataViz Agency</span>
+              <span className="text-xl font-bold text-primary">
+                DataViz Agency
+              </span>
             </Link>
           </div>
 
@@ -77,11 +83,16 @@ const Navigation = () => {
               <SheetContent>
                 <div className="flex flex-col space-y-4 mt-8">
                   {navItems.map((item) => (
-                    <NavLink key={item.path} path={item.path} label={item.label} mobile />
+                    <NavLink
+                      key={item.path}
+                      path={item.path}
+                      label={item.label}
+                      mobile
+                    />
                   ))}
                   <Link href="/dashboard">
                     <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                      대시보드
+                      대 시 보 드
                     </Button>
                   </Link>
                 </div>
